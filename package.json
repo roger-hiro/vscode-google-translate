@@ -1,0 +1,166 @@
+{
+    "name": "google-translate",
+    "publisher": "hancel",
+    "displayName": "Google Translate",
+    "description": "A extension uses to translate words between different language by google.",
+    "keywords": [
+        "Google",
+        "Translate",
+        "english",
+        "chinese",
+        "language",
+        "Japanese",
+        "Korean"
+    ],
+    "version": "1.2.6",
+    "repository": "https://github.com/imlinhanchao/vsc-google-translate",
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "icon": "asserts/icon.png",
+    "license": "MIT",
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "workspaceContains:*.*",
+        "onCommand:translates.translates",
+        "onCommand:translates.clipboard",
+        "onCommand:translates.replace",
+        "onCommand:translates.hover",
+        "onCommand:translates.candidate",
+        "onCommand:translates.Settings"
+    ],
+    "main": "./src/extension",
+    "contributes": {
+        "hoverProvider": "true",
+        "commands": [
+            {
+                "command": "translates.translates",
+                "category": "Google Translate",
+                "title": "%translates.title%"
+            },
+            {
+                "command": "translates.clipboard",
+                "category": "Google Translate",
+                "title": "%translateAndCopy.title%"
+            },
+            {
+                "command": "translates.replace",
+                "category": "Google Translate",
+                "title": "%translateAndReplace.title%"
+            },
+            {
+                "command": "translates.candidate",
+                "category": "Google Translate",
+                "title": "%translateCandidateResult.title%"
+            },
+            {
+                "command": "translates.detect",
+                "category": "Google Translate",
+                "title": "%translateDetectLang.title%"
+            },
+            {
+                "command": "translates.swap",
+                "category": "Google Translate",
+                "title": "%translateSwpLang.title%"
+            },
+            {
+                "command": "translates.hover",
+                "category": "Google Translate",
+                "title": "%translationHoverSwitch.title%",
+                "icon": {
+                    "light": "./asserts/translate.svg",
+                    "dark": "./asserts/translate-dark.svg"
+                }
+            },
+            {
+                "command": "translates.settings",
+                "category": "Google Translate",
+                "title": "%translationSettings.title%"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "translates.translates",
+                "key": "ctrl+shift+t",
+                "mac": "cmd+shift+t",
+                "when": "editorHasSelection"
+            },
+            {
+                "command": "translates.clipboard",
+                "key": "alt+t",
+                "mac": "alt+t",
+                "when": "editorHasSelection"
+            },
+            {
+                "command": "translates.replace",
+                "key": "alt+ctrl+t",
+                "mac": "alt+cmd+t",
+                "when": "editorHasSelection"
+            },
+            {
+                "command": "translates.candidate",
+                "key": "shift+alt+t",
+                "mac": "shift+alt+t",
+                "when": "editorHasSelection"
+            },
+            {
+                "command": "translates.hover",
+                "key": "ctrl+k alt+t",
+                "mac": "cmd+k alt+t",
+                "when": "editorTextFocus"
+            }
+        ],
+        "configuration": {
+            "title": "Google Translate",
+            "properties": {
+                "google-translate.switchFunctionTranslation": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "%switchFunctionTranslation.description%"
+                },
+                "google-translate.serverDomain": {
+                    "type": "string",
+                    "default": "https://translate.google.cn",
+                    "description": "%serverDomain.description%"
+                },
+                "google-translate.firstLanguage": {
+                    "type": "string",
+                    "default": "%firstLanguage.default%",
+                    "description": "%firstLanguage.description%"
+                },
+                "google-translate.secondLanguage": {
+                    "type": "string",
+                    "default": "en",
+                    "description": "%secondLanguage.description%"
+                },
+                "google-translate.maxSizeOfResult": {
+                    "type": "number",
+                    "default": "20",
+                    "description": "%maxSizeOfResult.description%"
+                },
+                "google-translate.noticeOnlyError": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "%noticeOnlyError.description%"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.42",
+        "@types/node": "^8.10.25",
+        "eslint": "^4.11.0",
+        "typescript": "^3.1.4",
+        "vscode": "^1.1.25"
+    },
+    "dependencies": {
+        "@imlinhanchao/google-translate-api": "^8.0.1",
+        "vscode-nls": "^4.1.1"
+    }
+}

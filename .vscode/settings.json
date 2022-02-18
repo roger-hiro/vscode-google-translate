@@ -1,0 +1,4 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "compile-hero.disable-compile-files-on-did-save-code": true
+}
